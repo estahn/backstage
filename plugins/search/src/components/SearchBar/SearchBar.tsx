@@ -14,13 +14,60 @@
  * limitations under the License.
  */
 
-import React, { ChangeEvent, useEffect, useState } from 'react';
+import React, { ChangeEvent, useEffect, KeyboardEvent, useState } from 'react';
 import { useDebounce } from 'react-use';
 import { InputBase, InputAdornment, IconButton } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
 import ClearButton from '@material-ui/icons/Clear';
 
 import { useSearch } from '../SearchContext';
+
+type PresenterProps = {
+  value: string;
+  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  handleClear?: () => void;
+  onKeyDown?: (e: KeyboardEvent<HTMLInputElement>) => void;
+  className?: string;
+  placeholder?: string;
+};
+
+export const SearchBarPresenter = ({
+  value,
+  onChange,
+  onKeyDown,
+  handleClear,
+  className,
+  placeholder,
+}: PresenterProps) => {
+  const endAdornment = (
+    <InputAdornment position="end">
+      <IconButton aria-label="Clear term" onClick={handleClear}>
+        <ClearButton />
+      </IconButton>
+    </InputAdornment>
+  );
+
+  return (
+    <InputBase
+      data-testid="search-bar-next"
+      fullWidth
+      placeholder={placeholder ?? 'Search in Backstage'}
+      value={value}
+      onChange={onChange}
+      inputProps={{ 'aria-label': 'Search term' }}
+      startAdornment={
+        <InputAdornment position="start">
+          <IconButton aria-label="Query term" disabled>
+            <SearchIcon />
+          </IconButton>
+        </InputAdornment>
+      }
+      {...(handleClear ? { endAdornment } : {})}
+      {...(className ? { className } : {})}
+      {...(onKeyDown ? { onKeyDown } : {})}
+    />
+  );
+};
 
 type Props = {
   className?: string;
@@ -44,28 +91,11 @@ export const SearchBar = ({ className, debounceTime = 0 }: Props) => {
   const handleClear = () => setValue('');
 
   return (
-    <InputBase
+    <SearchBarPresenter
       className={className}
-      data-testid="search-bar-next"
-      fullWidth
-      placeholder="Search in Backstage"
       value={value}
       onChange={handleQuery}
-      inputProps={{ 'aria-label': 'Search term' }}
-      startAdornment={
-        <InputAdornment position="start">
-          <IconButton aria-label="Query term" disabled>
-            <SearchIcon />
-          </IconButton>
-        </InputAdornment>
-      }
-      endAdornment={
-        <InputAdornment position="end">
-          <IconButton aria-label="Clear term" onClick={handleClear}>
-            <ClearButton />
-          </IconButton>
-        </InputAdornment>
-      }
+      handleClear={handleClear}
     />
   );
 };

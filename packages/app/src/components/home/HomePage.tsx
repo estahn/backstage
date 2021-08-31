@@ -22,9 +22,13 @@ import {
   ComponentTabs,
   ComponentTab,
 } from '@backstage/plugin-home';
+import { SearchBarHomePageComponent } from '@backstage/plugin-search';
 
 export const HomePage = () => (
   <Grid container spacing={3}>
+    <Grid item xs={12}>
+      <SearchBarHomePageComponent />
+    </Grid>
     <Grid item xs={12} md={4}>
       <RandomJokeHomePageComponent />
     </Grid>

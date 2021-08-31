@@ -72,6 +72,15 @@ export const searchApiRef: ApiRef<SearchApi>;
 // @public (undocumented)
 export const SearchBar: ({ className, debounceTime }: Props) => JSX.Element;
 
+// Warning: (ae-missing-release-tag) "SearchBarHomePageComponent" is exported by the package, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public (undocumented)
+export const SearchBarHomePageComponent: ({
+  placeholder,
+}: {
+  placeholder?: string | undefined;
+}) => JSX.Element;
+
 // Warning: (ae-missing-release-tag) "SearchBarNext" is exported by the package, but it is missing a release tag (@alpha, @beta, @public, or @internal)
 //
 // @public @deprecated (undocumented)

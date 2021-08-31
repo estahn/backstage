@@ -1,5 +1,16 @@
 # @backstage/plugin-org
 
+## 0.3.21
+
+### Patch Changes
+
+- c9927b1c7: Don't open a new tab when clicking on the ownership card.
+- ff304cfc3: Fix OwnershipCard links to support namespaced owners
+- Updated dependencies
+  - @backstage/plugin-catalog-react@0.4.5
+  - @backstage/core-components@0.4.0
+  - @backstage/catalog-model@0.9.1
+
 ## 0.3.20
 
 ### Patch Changes

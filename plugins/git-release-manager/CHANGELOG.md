@@ -1,5 +1,13 @@
 # @backstage/plugin-git-release-manager
 
+## 0.2.5
+
+### Patch Changes
+
+- 27ef7b645: Wrap each feature in custom feature arrays with an element containing a 'key' to avoid missing-key-warnings
+- Updated dependencies
+  - @backstage/core-components@0.4.0
+
 ## 0.2.4
 
 ### Patch Changes

@@ -1,5 +1,21 @@
 # @backstage/plugin-techdocs
 
+## 0.11.1
+
+### Patch Changes
+
+- 30ed662a3: Adding in-context search to TechDocs Reader component. Using existing search-backend to query for indexed search results scoped into a specific entity's techdocs. Needs TechDocsCollator enabled on the backend to work.
+
+  Adding extra information to indexed tech docs documents for search.
+
+- Updated dependencies
+  - @backstage/plugin-catalog-react@0.4.5
+  - @backstage/core-components@0.4.0
+  - @backstage/plugin-catalog@0.6.14
+  - @backstage/catalog-model@0.9.1
+  - @backstage/integration-react@0.1.8
+  - @backstage/plugin-search@0.4.9
+
 ## 0.11.0
 
 ### Minor Changes
